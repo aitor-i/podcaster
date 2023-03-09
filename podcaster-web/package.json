@@ -19,8 +19,16 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --watchAll=false --collectCoverage",
+    "test-coverage": "react-scripts test --watchAll=false --collectCoverage",
+    "test-watch": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ignore-path .eslintignore",
+    "lint-fix": "eslint . --fix",
+    "prepare": "husky install",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx|html)\"",
+    "check-format": "prettier --ignore-path .gitignore --list-different \"**/*.+(js|json|ts|tsx|html)\"",
+    "validate": "npm run lint && npm run check-format && npm run test -- --no-watch"
   },
   "eslintConfig": {
     "extends": [

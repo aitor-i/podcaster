@@ -4,6 +4,8 @@
   align-items: center;
   width: 250px;
   padding-top: 100px;
+  text-decoration: none;
+  color: black;
 }
 .imageContainer {
   position: absolute;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import PodcastCardStyles from './PodcastCard.module.css';
 
@@ -6,11 +7,12 @@ interface IProps {
   imageSrc: string;
   podcastName: string;
   author: string;
+  id: string;
 }
 
-export const PodcastCard = ({ author, imageSrc, podcastName }: IProps) => {
+export const PodcastCard = ({ author, imageSrc, podcastName, id }: IProps) => {
   return (
-    <div className={PodcastCardStyles.cardContainer}>
+    <Link className={PodcastCardStyles.cardContainer} to={`/podcast/${id}`}>
       <div className={PodcastCardStyles.imageContainer}>
         <img alt="podcast" src={imageSrc} />
       </div>
@@ -18,6 +20,6 @@ export const PodcastCard = ({ author, imageSrc, podcastName }: IProps) => {
         <h3 className={PodcastCardStyles.name}>{podcastName}</h3>
         <p className={PodcastCardStyles.author}>Author: {author}</p>
       </div>
-    </div>
+    </Link>
   );
 };

@@ -41,8 +41,9 @@ export const PodcastGrid = () => {
           podcasts.map(podcastData => (
             <PodcastCard
               author={podcastData['im:artist'].label}
+              id={podcastData.id.attributes['im:id']}
               imageSrc={podcastData['im:image'][2].label}
-              key={podcastData.id.label}
+              key={podcastData.id.attributes['im:id']}
               podcastName={podcastData.title.label}
             />
           ))}

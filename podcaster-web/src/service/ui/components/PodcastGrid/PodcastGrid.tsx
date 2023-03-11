@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 
 import PodcastCard from './PodcastCard';
 
-import type { RootObject as IPodcastsData, Entry as IPodcastList } from 'domain/model/IPodcastsData';
-
 import { fetcher } from 'service/fetcher/fetcher';
+
+import PodcastGridStyles from './PodcastGrid.module.css';
+
+import type { RootObject as IPodcastsData, Entry as IPodcastList } from 'domain/model/IPodcastsData';
 import type { IFetcher } from 'service/fetcher/IFetcher';
 
 export const PodcastGrid = () => {
@@ -31,10 +33,10 @@ export const PodcastGrid = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <div>Filter</div>
       {fetchingState === 'loading' && <div>Loading ...</div>}
-      <div>
+      <div className={PodcastGridStyles.podcastCardsGrid}>
         {fetchingState === 'success' &&
           podcasts.map(podcastData => (
             <PodcastCard
@@ -45,6 +47,6 @@ export const PodcastGrid = () => {
             />
           ))}
       </div>
-    </div>
+    </>
   );
 };

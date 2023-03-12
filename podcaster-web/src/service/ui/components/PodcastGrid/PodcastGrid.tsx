@@ -1,4 +1,8 @@
-import { useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
+
+import { useSetRecoilState, useRecoilState } from 'recoil';
+
+import { podcastState as podcastsAtom } from 'domain/atoms/podcasts';
 
 import PodcastCard from 'service/ui/components/PodcastGrid/PodcastCard';
 import { useFetch } from 'service/ui/hooks/useFetch';
@@ -9,6 +13,7 @@ import type { RootObject as IPodcastsData } from 'domain/model/IPodcastsData';
 import type { IFetcher } from 'service/fetcher/IFetcher';
 
 export const PodcastGrid = () => {
+  const [podcastsState, setPodcastsState] = useRecoilState(podcastsAtom);
   const fetchConfiguration: IFetcher = useMemo(
     () => ({
       method: 'GET',
@@ -16,15 +21,27 @@ export const PodcastGrid = () => {
     }),
     []
   );
-  const { apiData, fetchingState } = useFetch<IPodcastsData>({ fetchConfig: fetchConfiguration });
+  const { apiData, fetchingState, isUpdated } = useFetch<IPodcastsData>({ fetchConfig: fetchConfiguration, fetchDate: podcastsState.updateDate });
+
+  const updatePodcastStateHandler = useCallback(() => {
+    const podcasts = apiData?.feed.entry || [];
+    const date = new Date();
+    setPodcastsState({ podcast: podcasts, updateDate: date });
+  }, [apiData, setPodcastsState]);
+
+  useEffect(() => {
+    if (isUpdated && fetchingState === 'success') {
+      updatePodcastStateHandler();
+    }
+  }, [updatePodcastStateHandler, isUpdated, fetchingState]);
 
   return (
     <>
       <div>Filter</div>
       {fetchingState === 'loading' && <div>Loading ...</div>}
       <div className={PodcastGridStyles.podcastCardsGrid}>
-        {fetchingState === 'success' &&
-          apiData?.feed.entry.map(podcastData => (
+        {fetchingState !== 'loading' &&
+          podcastsState.podcast.map(podcastData => (
             <PodcastCard
               author={podcastData['im:artist'].label}
               id={podcastData.id.attributes['im:id']}

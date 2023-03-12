@@ -2,9 +2,19 @@
   display: flex;
   flex: 1;
   padding: 5px;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
-
+h2 {
+  padding-bottom: 1rem;
+  -webkit-box-shadow: 10px 10px 12px -6px rgba(0, 0, 0, 0.51);
+  -moz-box-shadow: 10px 10px 12px -6px rgba(0, 0, 0, 0.51);
+  box-shadow: 10px 10px 12px -6px rgba(0, 0, 0, 0.51);
+}
+.episodesContainer {
+  padding: 10px;
+  -webkit-box-shadow: -10px -10px 12px -6px rgba(0, 0, 0, 0.51);
+  -moz-box-shadow: -10px -10px 12px -6px rgba(0, 0, 0, 0.51);
+  box-shadow: -10px -10px 12px -6px rgba(0, 0, 0, 0.51);
+}
 .episodeTitle {
   flex: 16;
   text-overflow: ellipsis;

@@ -12,12 +12,12 @@ export const PodcastEpisodes = ({ episodeCount, episodeList }: IProps) => {
   return (
     <div>
       <h2>Episodes: {episodeCount}</h2>
-      <div className={EpisodesStyles.episode}>
-        <p className={EpisodesStyles.episodeTitle}>title</p>
-        <p className={EpisodesStyles.episodeDate}>formattedDate</p>
-        <p className={EpisodesStyles.episodeDuration}>time</p>
-      </div>
-      <div>
+      <div className={EpisodesStyles.episodesContainer}>
+        <div className={EpisodesStyles.episode}>
+          <b className={EpisodesStyles.episodeTitle}>Title</b>
+          <b className={EpisodesStyles.episodeDate}>Date</b>
+          <b className={EpisodesStyles.episodeDuration}>Time</b>
+        </div>
         {episodeList &&
           episodeList.map((episode, index) => (
             <EpisodeListItem

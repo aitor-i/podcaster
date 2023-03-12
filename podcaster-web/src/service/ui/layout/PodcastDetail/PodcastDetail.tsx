@@ -1,5 +1,13 @@
-import React from 'react';
+import Header from 'service/ui/components/Header';
+import PodcastDetailBody from 'service/ui/components/PodcastDetailBody';
+
+import PodcastDetailStyles from './PodcastDetail.module.css';
 
 export const PodcastDetail = () => {
-  return <div>PodcastDetail</div>;
+  return (
+    <div className={PodcastDetailStyles.podcastDetailPage}>
+      <Header />
+      <PodcastDetailBody />
+    </div>
+  );
 };

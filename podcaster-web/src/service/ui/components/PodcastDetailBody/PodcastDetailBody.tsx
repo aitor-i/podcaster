@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useMemo } from 'react';
 
 import { useParams } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import { podcastsDetailState as podcastsDetailAtom } from 'domain/atoms/podcastDetails';
+import { podcastState as podcastsStateAtom } from 'domain/atoms/podcasts';
 
 import { useFetch } from 'service/ui/hooks/useFetch';
 
@@ -18,6 +19,7 @@ import type { IPodcastDetailsState } from 'domain/atoms/podcastDetails';
 
 export const PodcastDetailBody = () => {
   const [podcastsDetailState, setPodcastDetailState] = useRecoilState(podcastsDetailAtom);
+  const podcastState = useRecoilValue(podcastsStateAtom);
   const { podcastId } = useParams();
   const fetchPodcastDetailConfig: IFetcher = useMemo(
     () => ({ method: 'GET', url: `https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=20` }),
@@ -43,10 +45,20 @@ export const PodcastDetailBody = () => {
     }
   }, [fetchingState, isUpdated, updateDetailHandler]);
 
+  const podcast = podcastState.podcast.find(podcast => podcast.id.attributes['im:id'] === podcastId);
+
   return (
     <div className={PodcastDetailBodyStyles.container}>
       <div className={PodcastDetailBodyStyles.informationContainer}>
-        <PodcastInformationCard />
+        {podcast && (
+          <PodcastInformationCard
+            author={podcast?.['im:artist'].label}
+            description={podcast?.summary.label}
+            id={podcast.id.attributes['im:id']}
+            imageSrc={podcast?.['im:image'][2].label}
+            podcastName={podcast?.title.label}
+          />
+        )}
       </div>
       <div className={PodcastDetailBodyStyles.episodesContainer}>
         {fetchingState !== 'loading' && (

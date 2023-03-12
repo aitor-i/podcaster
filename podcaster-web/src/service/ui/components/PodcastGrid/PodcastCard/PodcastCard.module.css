@@ -21,7 +21,7 @@
 .informationContainer {
   display: flex;
   flex-direction: column;
-  border: 1px solid gray;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-top: none;
   gap: 1rem;
   padding: 10px;
@@ -39,6 +39,6 @@
   font-size: 0.8rem;
   text-align: center;
   font-weight: 600;
-  color: gray;
+  color: rgba(0, 0, 0, 0.06);
   text-overflow: ellipsis;
 }

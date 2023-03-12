@@ -1,6 +1,6 @@
 .container {
   width: 300px;
-  border: 1px solid grey;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +13,7 @@
 .authorContainer {
   padding: 5px;
   font-size: 0.8rem;
-  border-top: 1px solid grey;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 .title {
   font-weight: 800;
@@ -27,7 +27,7 @@
 }
 
 .descriptionContainer {
-  border-top: 1px solid grey;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 .description {
   font-size: 0.8rem;

@@ -6,6 +6,8 @@ import { podcastState as podcastsAtom } from 'domain/atoms/podcasts';
 
 import type { IFilteredPodcast } from '../PodcastGrid';
 
+import PodcastFilterStyles from './PodcastFilter.module.css';
+
 interface IProps {
   setPodcastHandler: (podcasts: IFilteredPodcast) => void;
   filteredPodcastState: IFilteredPodcast;
@@ -34,10 +36,10 @@ export const PodcastFilter = ({ setPodcastHandler, filteredPodcastState }: IProp
   const podcastsNumber = !isFiltered ? podcastsState.podcast.length : filteredPodcastState.podcasts.length;
 
   return (
-    <div>
-      <div>{podcastsNumber}</div>
-      <div>
-        <input id="podcast-filter" name="podcast-filter" onChange={filterChangeHandler} type="text" />
+    <div className={PodcastFilterStyles.container}>
+      <div className={PodcastFilterStyles.number}>{podcastsNumber}</div>
+      <div className={PodcastFilterStyles.input}>
+        <input id="podcast-filter" name="podcast-filter" onChange={filterChangeHandler} placeholder="Filter podcasts..." type="text" />
       </div>
     </div>
   );

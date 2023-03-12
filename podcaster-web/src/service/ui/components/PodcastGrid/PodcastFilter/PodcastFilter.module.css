@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: center;
+}
+.number {
+  border-radius: 5px;
+  background-color: navy;
+  padding: 3px 10px;
+  font-weight: 800;
+  color: #f2f2f2;
+}

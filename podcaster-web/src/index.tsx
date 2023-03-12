@@ -1,26 +1,8 @@
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { RecoilRoot } from 'recoil';
 
-import HomePage from 'service/ui/layout/HomePage';
+import { App } from './App';
 
 import './index.css';
-import PodcastDetail from './service/ui/layout/PodcastDetail';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomePage />
-  },
-  {
-    path: '/podcast/:podcastId',
-    element: <PodcastDetail />
-  }
-]);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(
-  <RecoilRoot>
-    <RouterProvider router={router} />
-  </RecoilRoot>
-);
+root.render(<App />);

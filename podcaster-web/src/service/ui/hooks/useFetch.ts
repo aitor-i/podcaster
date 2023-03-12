@@ -1,4 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+
+import { fetchingState as fetchingStateAtom } from 'domain/atoms/fetching';
 
 import { fetcher } from 'service/fetcher/fetcher';
 
@@ -26,6 +29,7 @@ interface IUseFetch {
 export const useFetch = <T>({ fetchConfig, fetchDate }: IUseFetch) => {
   const [apiData, setApiData] = useState<T>();
   const [fetchingState, setFetchingState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const setFetchingGlobalState = useSetRecoilState(fetchingStateAtom);
   const validateDates: IDatesValidator = {
     firstDate: fetchDate,
     secondDate: new Date(),
@@ -36,14 +40,17 @@ export const useFetch = <T>({ fetchConfig, fetchDate }: IUseFetch) => {
   const fetchHandler = useCallback(async () => {
     try {
       setFetchingState('loading');
+      setFetchingGlobalState(true);
       const response: T = await fetcher(fetchConfig);
       setApiData(response);
       setFetchingState('success');
+      setFetchingGlobalState(false);
     } catch (error) {
       setFetchingState('error');
+      setFetchingGlobalState(false);
       throw new Error('Error fetching data');
     }
-  }, [fetchConfig]);
+  }, [fetchConfig, setFetchingGlobalState]);
 
   useEffect(() => {
     if (isOneDayPassed) {

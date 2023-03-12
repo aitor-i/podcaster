@@ -4,5 +4,5 @@ import type { Entry as IPodcast } from 'domain/model/IPodcastsData';
 
 export const podcastState = atom({
   key: 'podcast-state',
-  default: [] as IPodcast[]
+  default: { podcast: [] as IPodcast[], updateDate: undefined as undefined | Date }
 });

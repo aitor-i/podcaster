@@ -22,8 +22,12 @@ export const PodcastDetailBody = () => {
 
   return (
     <div className={PodcastDetailBodyStyles.container}>
-      <PodcastInformationCard />
-      {fetchingState === 'success' && <PodcastEpisodes episodeCount={apiData?.resultCount!} episodeList={apiData?.results!} />}
+      <div className={PodcastDetailBodyStyles.informationContainer}>
+        <PodcastInformationCard />
+      </div>
+      <div className={PodcastDetailBodyStyles.episodesContainer}>
+        {fetchingState === 'success' && <PodcastEpisodes episodeCount={apiData?.resultCount!} episodeList={apiData?.results!} />}
+      </div>
     </div>
   );
 };

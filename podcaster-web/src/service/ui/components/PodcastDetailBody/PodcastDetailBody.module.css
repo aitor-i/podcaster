@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+}
+
+.informationContainer {
+  flex: 1;
+}
+
+.episodesContainer {
+  flex: 3;
+}

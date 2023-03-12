@@ -23,6 +23,7 @@ export const PodcastEpisodes = ({ episodeCount, episodeList }: IProps) => {
             <EpisodeListItem
               date={episode.releaseDate}
               durationMs={episode.trackTimeMillis}
+              id={episode.trackId}
               index={index}
               key={episode.trackId}
               title={episode.trackName}

@@ -28,7 +28,6 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "prepare": "husky install",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx|html)\"",
     "check-format": "prettier --ignore-path .gitignore --list-different \"**/*.+(js|json|ts|tsx|html)\"",
     "validate": "npm run lint && npm run check-format && npm run test -- --no-watch",

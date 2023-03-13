@@ -5,7 +5,6 @@ import HomePage from 'service/ui/layout/HomePage';
 import PodcastDetail from 'service/ui/layout/PodcastDetail';
 import ErrorBoundary from './service/ui/components/ErrorBoundary/ErrorBoundary';
 import EpisodeDetail from './service/ui/layout/EpisodeDetail';
-import Fallback from './service/ui/layout/Fallback';
 
 export const App = () => {
   return (

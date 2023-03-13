@@ -1,0 +1,26 @@
+.container {
+  flex: 1;
+  height: 100vh;
+  gap: 6rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.redirection {
+  color: white;
+  background-color: navy;
+  text-decoration: none;
+  text-align: center;
+  padding: 20px 5px;
+  font-size: 2rem;
+  font-weight: 800;
+  max-width: 20rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container h1 {
+  color: red;
+  font-size: 4rem;
+}

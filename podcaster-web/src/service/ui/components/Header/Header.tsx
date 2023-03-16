@@ -6,11 +6,11 @@ import HeaderStyles from './Header.module.css';
 
 export const Header = () => {
   return (
-    <Fragment>
+    <div className={HeaderStyles.headerContainer}>
       <Link className={HeaderStyles.title} to="/">
         <h1>Podcaster</h1>
       </Link>
       <Loader />
-    </Fragment>
+    </div>
   );
 };
